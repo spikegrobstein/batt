@@ -1,0 +1,6 @@
+#! /usr/bin/env ruby
+# vi:syntax=ruby
+
+require 'batt'
+
+Batt::App.start(ARGV)
