@@ -2,8 +2,8 @@ module Batt
   class App < Thor
 
     desc "status", "spit out the full battery status"
-    option :tmux, :type => :boolean
-    option :ansi, :type => :boolean
+    # option :tmux, :type => :boolean
+    # option :ansi, :type => :boolean
     def status
       b = Batt::Reader.new
       result = b.status
