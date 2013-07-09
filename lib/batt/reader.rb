@@ -7,7 +7,7 @@ module Batt
       os = get_os
       case os
       when :darwin
-        @battery_reader = lambda { get_battery_status_osx }
+        @battery_reader = lambda { parse_battery_status_osx(get_battery_status_osx) }
       else
         raise "Unsupported OS: #{ os }"
       end
@@ -29,15 +29,16 @@ module Batt
 
     # get the battery status for OSX
     # returns a hash.
+    # spits out something like:
+    # Currently drawing from 'AC Power'
+    # -InternalBattery-0     98%; charging; 0:30 remaining
     # TODO: write some docs
     def get_battery_status_osx
       line = Cocaine::CommandLine.new('pmset', '-g batt')
       output = line.run
+    end
 
-      # spits out something like:
-      # Currently drawing from 'AC Power'
-      # -InternalBattery-0     98%; charging; 0:30 remaining
-
+    def parse_battery_status_osx(output)
       output = output.split(/\n/)
       status = output.shift.scan(/'(.+?)'/).first
       result = status + output.shift.scan(/(\d+%);\s*(.+?);\s*(.+)/).first
