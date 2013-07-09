@@ -37,7 +37,7 @@ Where `action` is one of the following:
 
  ## tmux
 
- Example `tmux` status line configuration:
+Example `tmux` status line configuration:
 
     tmux set-option status-right-length 120
     tmux set-option status-right "[ #(batt source) #(batt remaining) ] #(date \"+%Y-%m-%d %H:%M:%S\")"
