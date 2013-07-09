@@ -48,11 +48,50 @@ describe Batt::Reader do
       context "with estimate" do
         let(:output) { output_ac_power_estimate }
 
+        it "should return a hash" do
+          status.class.should == Hash
+        end
+
+        it "should return a source of 'AC Power'" do
+          status[:source].should == 'AC Power'
+        end
+
+        it "should return a capacity of '88%'" do
+          status[:capacity].should == '88%'
+        end
+
+        it "should return a status of 'charging'" do
+          status[:status].should == 'charging'
+        end
+
+        it "should return a remaining of '0:30 remaining'" do
+          status[:remaining].should == '0:30 remaining'
+        end
       end
     end
 
     context "when on battery power" do
       let(:output) { output_battery_power }
+
+      it "should return a hash" do
+        status.class.should == Hash
+      end
+
+      it "should return a source of 'Battery Power'" do
+        status[:source].should == 'Battery Power'
+      end
+
+      it "should return a capacity of '100%'" do
+        status[:capacity].should == '100%'
+      end
+
+      it "should return a status of 'discharging'" do
+        status[:status].should == 'discharging'
+      end
+
+      it "should return a remaining of '5:36 remaining'" do
+        status[:remaining].should == '5:36 remaining'
+      end
     end
   end
 end
