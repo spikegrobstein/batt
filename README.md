@@ -4,6 +4,8 @@ Read the battery status from your laptop. Designed to be used in `tmux`'s status
 
 Currently only supports OSX.
 
+*Dude I was just realizing I basically cannot live without batt now...  it is dope* -- Rich Soni
+
 ## Installation
 
 Add this line to your application's Gemfile:
