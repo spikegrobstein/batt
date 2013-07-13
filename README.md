@@ -35,12 +35,23 @@ Where `action` is one of the following:
  * `remaining` -- amount of time remaining til complete discharge or complete charge
  * `capacity` -- a percentage of how charged the battery is
 
- ## tmux
+## tmux
 
-Example `tmux` status line configuration:
+Tmux support is a work in progress and is one of the primary use-cases for the design
+of this gem. Currently, only the `capacity` action has tmux support, which can be enabled
+via passing `--tmux` to it:
 
-    tmux set-option status-right-length 120
-    tmux set-option status-right "[ #(batt source) #(batt remaining) ] #(date \"+%Y-%m-%d %H:%M:%S\")"
+    batt capacity --tmux
+
+Future releases will have additional support for tmux. I just need to work out what
+it's gonna look like.
+
+### Example tmux.conf
+
+Example `tmux` status line configuration. Add this to your .tmux.conf:
+
+    set-option status-right-length 120
+    set-option status-right "[ #(batt source) #(batt capacity --tmux) ] #(date \"+%Y-%m-%d %H:%M\")"
 
 ## Contributing
 
