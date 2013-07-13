@@ -1,3 +1,4 @@
+require 'pry'
 module Batt
   class App < Thor
 
@@ -23,10 +24,18 @@ module Batt
     end
 
     desc "capacity", "spit out the current capacity in % of the battery"
+    option :tmux, :type => :boolean, :desc => 'Enable tmux colour'
     def capacity
       b = Batt::Reader.new
 
-      puts b.status[:capacity]
+      c = b.status[:capacity]
+
+      if options[:tmux]
+        color = %w(red yellow green)[c.to_i / 33]
+        puts "#[bg=#{color},fg=black]#{ c }#[default]"
+      else
+        puts c
+      end
     end
 
     desc "status", "spit out the status of the battery"
