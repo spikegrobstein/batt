@@ -13,13 +13,15 @@ module Batt
       end
     end
 
+    # runs the batteryreader
+    # this could probably be refactored to leverage a class per OS
     def status
       @battery_reader.call
     end
 
     # figure out which OS is running
     # this might need to be a little more solid
-    # returns a downcased symbol
+    # returns a downcased symbol (eg: +:darwin+ or +:linux+)
     def get_os
       line = Cocaine::CommandLine.new('uname')
       output = line.run
