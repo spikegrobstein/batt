@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'pry'
 module Batt
   class App < Thor
@@ -71,7 +73,7 @@ module Batt
 
         puts "[#{ Formatter::Tmux.format meter_filled, :bg => color }#{ meter_empty }]"
       else
-        puts "[#{ '|' * meter_filled_level }#{ ' ' * (meter_size - meter_filled_level) }]"
+        puts "[#{ "█" * meter_filled_level }#{ ' ' * (meter_size - meter_filled_level) }]"
       end
     end
 
