@@ -1,3 +1,8 @@
+0.2.1 (2013/08/04)
+---
+
+ * apparently orange is not a valid tmux color. woops.
+
 0.2.0 (2013/08/04)
 ---
 

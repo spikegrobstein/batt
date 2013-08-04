@@ -54,8 +54,7 @@ module Batt
       def color_for_capacity(capacity)
         case capacity.to_i
         when -100..20 then :red # if there's any weird errors where things go negative, be red.
-        when 20..30 then :orange
-        when 30..75 then :yellow
+        when 20..75 then :yellow
         else
           :green
         end

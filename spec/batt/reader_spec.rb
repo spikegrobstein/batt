@@ -112,14 +112,6 @@ describe Batt::Reader do
         color_for_capacity(20).should == :red
       end
 
-      it "should be :orange when between 20 and 30" do
-        color_for_capacity(25).should == :orange
-      end
-
-      it "should be :orange when == 30" do
-        color_for_capacity(30).should == :orange
-      end
-
       it "should be :yellow when == 50" do
         color_for_capacity(50).should == :yellow
       end
