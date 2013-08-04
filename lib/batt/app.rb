@@ -32,7 +32,7 @@ module Batt
 
       if options[:tmux]
         color = Reader.color_for_capacity(c.to_i)
-        puts "#[bg=#{color},fg=black]#{ c }#[default]"
+        puts Formatter::Tmux.format c, :fg => :black, :bg => color
       else
         puts c
       end
