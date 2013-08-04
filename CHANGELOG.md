@@ -1,3 +1,8 @@
+0.2.2 ( ???? )
+---
+
+ * changed meter drawing code to use ascii blocks instead of spaces or pipes. looks nicer.
+
 0.2.1 (2013/08/04)
 ---
 

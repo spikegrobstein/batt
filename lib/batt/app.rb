@@ -67,11 +67,11 @@ module Batt
       meter_filled_level = (meter_size * ( c.to_f / 100 )).round
 
       if options[:tmux]
-        meter_filled = " " * (meter_filled_level)
+        meter_filled = "█" * (meter_filled_level)
         meter_empty = " " * (meter_size - meter_filled_level)
         color = Reader.color_for_capacity(c)
 
-        puts "[#{ Formatter::Tmux.format meter_filled, :bg => color }#{ meter_empty }]"
+        puts "[#{ Formatter::Tmux.format meter_filled, :fg => color }#{ meter_empty }]"
       else
         puts "[#{ "█" * meter_filled_level }#{ ' ' * (meter_size - meter_filled_level) }]"
       end
