@@ -31,7 +31,7 @@ module Batt
       c = b.status[:capacity]
 
       if options[:tmux]
-        color = %w(red yellow green)[c.to_i / 33]
+        color = Reader.color_for_capacity(c.to_i)
         puts "#[bg=#{color},fg=black]#{ c }#[default]"
       else
         puts c
@@ -51,6 +51,16 @@ module Batt
       b = Batt::Reader.new
 
       puts b.status[:remaining]
+    end
+
+    desc "meter", "return an ascii-art battery meter showing the current capacity."
+    option :tmux, :type => :boolean, :desc => "Enable tmux colour"
+    def meter
+      b = Batt::Reader.new
+
+      c = b.status[:capacity].to_i
+
+
     end
 
   end

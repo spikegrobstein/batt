@@ -93,5 +93,48 @@ describe Batt::Reader do
         status[:remaining].should == '5:36 remaining'
       end
     end
+
+    context "color_for_capacity" do
+
+      def color_for_capacity(capacity)
+        Batt::Reader.color_for_capacity(capacity)
+      end
+
+      it "should be :red when -1" do
+        color_for_capacity(-1).should == :red
+      end
+
+      it "should be :red when 15" do
+        color_for_capacity(15).should == :red
+      end
+
+      it "should be :red when == 20" do
+        color_for_capacity(20).should == :red
+      end
+
+      it "should be :orange when between 20 and 30" do
+        color_for_capacity(25).should == :orange
+      end
+
+      it "should be :orange when == 30" do
+        color_for_capacity(30).should == :orange
+      end
+
+      it "should be :yellow when == 50" do
+        color_for_capacity(50).should == :yellow
+      end
+
+      it "should be :green when 80" do
+        color_for_capacity(80).should == :green
+      end
+
+      it "should be :green when 100" do
+        color_for_capacity(100).should == :green
+      end
+
+      it "should be :green when 101" do
+        color_for_capacity(101).should == :green
+      end
+    end
   end
 end
