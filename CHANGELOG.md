@@ -3,6 +3,8 @@
 
  * added new `meter` action for rendering a meter
  * created new `Batt::Formatter::Tmux` class for doing tmux color more easily
+ * changed the way we calculate how to colourize. instead of even thirds, it now
+   uses custom ranges. red is less than 20, yellow is 20-75 and green is 75 and higher.
 
 0.1.0 (2013/07/13)
 ---
